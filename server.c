@@ -33,7 +33,12 @@ int main()
  int b = bind(serversoc,(struct sockaddr*)&localserver, sizeof(localserver));
     if (b==-1) {
         perror("Unable to bind socket with address\n");
-        exit(0);
-       
+        exit(0); 
     }
-              
+          /* Activating my socket to listen to connecttions*/
+      if ((listen(serversoc, 5)) == -1) {
+            perror("Unable to Listen \n");
+            exit(0);
+        }
+
+    
