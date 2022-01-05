@@ -24,7 +24,16 @@ int main()
         exit code (0);
          }
     /* Assigning port and adress to my structure*/
- struct sockaddr_in localserver, client;
- localserver.sin_family=AF_INET;
- localserver.sin_port=htons(PORT) ;
- localserver.sin_addr.s_addr = htonl(INADDR_ANY);
+     struct sockaddr_in localserver, client;
+     localserver.sin_family=AF_INET;
+     localserver.sin_port=htons(PORT) ;
+     localserver.sin_addr.s_addr = htonl(INADDR_ANY);
+    
+    /*Binding my server socket with addresses*/
+ int b = bind(serversoc,(struct sockaddr*)&localserver, sizeof(localserver));
+    if (b==-1) {
+        perror("Unable to bind socket with address\n");
+        exit(0);
+       
+    }
+              
