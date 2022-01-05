@@ -82,6 +82,4 @@ int length;
 }
       
 
-       close(serversoc);
-       }
-      
+       
