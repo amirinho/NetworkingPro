@@ -50,13 +50,57 @@ int main()
        else
            printf("server accepted connection from client.\n");
       
-
-    close(serversoc);
-    close(con);
+/*fork system to handle multiple clients*/
+      if((childpid = fork()) == 0){
+                    close(serversoc);
+        
+        /*method to send and receive data from the client*/
+      
+        int k,p,l1,l2;
+        
+        system ("List>a.txt") ;
+        char str[50];
+        char *msg="";
+        FILE *fp=fopen("b.txt", "r");
+        msg= (char*) malloc(1);
+while(fgets (str,50, fp)!=NULL)
+        {
+            l1= strlen(str);
+            l2= strlen(msg);
+            
+            msg =(char *) realloc (msg, l1+l2);
+            strcat(msg,str);
+            fclose(fp);
+             int s=strlen(msg);
+             send (con,&s,4,0);
+             send (con,msg,strlen(msg),0);
+            
+            char fname[20];
+             int f1=recv(con, fname, sizeof (fname) , 0) ;
+             fname[f1]='\0';
+            printf ("File request' received from client is%s\n", fname);
+            fp = fopen(fname, "r");
+            
     
-
-
-
+            msg= (char*) malloc(1);
+    while(fgets (str,50, fp)!=NULL)
+            {
+                l1= strlen(str);
+                l2= strlen(msg);
+                
+                msg =(char *) realloc (msg, l1+l2);
+                strcat(msg,str);
+            }
+                int p3=strlen(msg);
+            
+             send (con,&p3,4,0);
+             send (con,msg,strlen(msg),0);
+            printf("File trasnmitted to client/n");
+        
+        
+            
+               
+                 }
+            }
 }
-
-
+}
