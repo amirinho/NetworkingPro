@@ -17,8 +17,8 @@
 int main()
 {
     /*Defining variable and creating socket for my server, i choose to work with Tcp which socket argument is defined as 0 in the socket function*/
-    int server =socket (AF_INET, SOCK_STREAM, 0);
-     if (server==-1)
+    int serversoc =socket (AF_INET, SOCK_STREAM, 0);
+     if (serversoc==-1)
     {
        perror ("Something went wring while creating socket failed\n") ;
         exit code (0);
