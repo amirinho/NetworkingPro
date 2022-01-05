@@ -10,7 +10,7 @@
 
 /* Definitions */
 #define DEFAULT_BUFLEN 512
-#define PORT 8080
+#define PORT 5000
 
 int main()
 {
