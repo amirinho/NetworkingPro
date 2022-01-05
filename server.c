@@ -23,4 +23,8 @@ int main()
        perror ("Something went wring while creating socket failed\n") ;
         exit code (0);
          }
-    
+    /* Assigning port and adress to my structure*/
+ struct sockaddr_in localserver, client;
+ localserver.sin_family=AF_INET;
+ localserver.sin_port=htons(PORT) ;
+ localserver.sin_addr.s_addr = htonl(INADDR_ANY);
