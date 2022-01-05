@@ -40,5 +40,23 @@ int main()
             perror("Unable to Listen \n");
             exit(0);
         }
+       /*Accepting connections from clients and closing sockets*/
+     length = sizeof(rmtclient);
+       int con = accept(serversoc,(struct sockaddr*)&rmtclient, &length);
+       if (con ==-1) {
+           perror("server failed to accept\n");
+           exit(0);
+       }
+       else
+           printf("server accepted connection from client.\n");
+      
 
+    close(serversoc);
+    close(con);
     
+
+
+
+}
+
+
